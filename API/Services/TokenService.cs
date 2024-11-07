@@ -17,7 +17,7 @@ public class TokenService(IConfiguration _config) : ITokenService
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
 
         List<Claim> claims = [
-            new Claim(ClaimTypes.NameIdentifier,user.UserName),
+            new Claim(ClaimTypes.NameIdentifier,user.UserName.ToLower()),
         ];
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
